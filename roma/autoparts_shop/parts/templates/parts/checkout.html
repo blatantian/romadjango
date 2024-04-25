@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="checkout">
+        {% if purchased %}
+            <h2>Спасибо за покупку!</h2>
+            <a href="{% url 'home' %}" class="btn btn-primary">Вернуться на главную страницу</a>
+        {% else %}
+            <h2>Оформление заказа</h2>
+            <form method="post">
+                {% csrf_token %}
+                <!-- Здесь поля для ввода данных покупателя -->
+                <button type="submit">Оформить заказ</button>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to our Auto Parts Store</h1>
+
+    <div class="parts-list">
+        {% for part in parts %}
+            <div class="part-item">
+                <h2>{{ part.name }}</h2>
+                <img src="{{ part.image.url }}" alt="{{ part.name }}">
+                <p>{{ part.description }}</p>
+                <p>Price: ${{ part.price }}</p>
+                <a href="{% url 'product_detail' part.id %}">View details</a>
+            </div>
+        {% empty %}
+            <p>No parts available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

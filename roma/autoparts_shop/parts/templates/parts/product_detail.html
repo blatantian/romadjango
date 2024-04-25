@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ part.name }}</h1>
+        <img src="{{ part.image.url }}" alt="{{ part.name }}">
+        <p>{{ part.description }}</p>
+        <p>Price: ${{ part.price }}</p>
+        
+        <!-- Кнопка Купить -->
+        <form method="post" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <input type="hidden" name="part_id" value="{{ part.id }}">
+            <button type="submit">Купить</button>
+        </form>
+    </div>
+{% endblock %}
